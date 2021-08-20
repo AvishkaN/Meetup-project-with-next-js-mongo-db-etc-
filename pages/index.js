@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MeetupList from './../components/meetups/MeetupList'
 
 const DUMMY_MEETUPS = [
@@ -20,13 +20,26 @@ const DUMMY_MEETUPS = [
 
 
 
-function index() {
-    return (
-        <div>
+function Home(props) {
+  console.log(`1`);
+  return (
+    <div>
+          {console.log(`rendering...`)}
             <h1>home</h1>
-            <MeetupList meetups={DUMMY_MEETUPS}/>
+            <MeetupList meetups={props.meetups}/>
         </div>
-    )
+  )
 }
 
-export default index
+export async function getStaticProps(){
+  // fetch data from an api
+  return{
+    props:{
+      meetups:DUMMY_MEETUPS
+    },
+    revalidate:1,
+  };
+};
+
+
+export default Home;
