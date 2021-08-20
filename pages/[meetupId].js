@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient,ObjectId } from 'mongodb';
 import MeetupDetails from './../components/meetups/MeetupDetails'
 
 function meetUpId(props) {
@@ -40,22 +40,31 @@ export async function getStaticPaths(){
 
 export async function getStaticProps(context){
 
-    console.log(context.params.meetupId);
-
+    // console.log(context.params.meetupId);
+    const meetupId=context.params.meetupId;
+    console.log(meetupId);
     // api
+    const client=await MongoClient
+        .connect('mongodb+srv://jayathissaMongoUser:asdasedfrasdefsadfsadfsdfdsf@cluster0.2u4vz.mongodb.net/meetups?retryWrites=true&w=majority')
+    const db=client.db();
+    const meetupCollection=db.collection('meetups');
 
-
+    
+    const selectedMeetup = await meetupCollection.findOne({
+        _id: ObjectId(meetupId),
+    });
+    console.log(selectedMeetup);
 
     //
 
     return {
         props:{
             meetupData:{
-                image:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1280px-Stadtbild_M%C3%BCnchen.jpg',
-                id:context.params.meetupId,
-                title:'first meetyup',
-                address:'some street,colombo,srilanka',
-                description:'this is a first meetup',
+                id: selectedMeetup._id.toString(),
+                title: selectedMeetup.title,
+                address: selectedMeetup.address,
+                image: selectedMeetup.image,
+                description: selectedMeetup.description,
             },
         }
     }

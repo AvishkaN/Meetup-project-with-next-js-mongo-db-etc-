@@ -1,9 +1,12 @@
+import router, { useRouter } from 'next/router';
 import React from 'react'
 import MeetupForm from './../../components/meetups/NewMeetupForm'
 
 function newMeetup() {
+    const roter= useRouter();
 
     const onAddMeetup=async (enteredMeetupData)=>{
+        console.log(roter);
         console.log(enteredMeetupData);
 
       // add meetup details to api  
@@ -17,6 +20,7 @@ function newMeetup() {
 
       const data=await response.json();
       console.log(data);
+      router.push('/');
     };
 
     return (
