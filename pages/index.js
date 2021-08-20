@@ -1,18 +1,25 @@
 import { MongoClient } from 'mongodb';
 import React, { useEffect, useState } from 'react'
 import MeetupList from './../components/meetups/MeetupList'
-
+import Head from 'next/head';
 
 
 
 function Home(props) {
   console.log(`1`);
   return (
-    <div>
+    <>
+    <Head>
+      <title>meetup list</title>
+      <meta 
+        name='description'
+        content='Add your own meetups and create amazing network opportunities'
+      />
+    </Head>
           {console.log(`rendering...`)}
             <h1>home</h1>
             <MeetupList meetups={props.meetups}/>
-        </div>
+        </>
   )
 }
 

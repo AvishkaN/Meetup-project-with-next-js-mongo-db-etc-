@@ -1,9 +1,17 @@
 import { MongoClient,ObjectId } from 'mongodb';
 import MeetupDetails from './../components/meetups/MeetupDetails'
+import Head from 'next/head';
 
 function meetUpId(props) {
     return (
         <>
+        <Head>
+            <title>{props.title}</title>
+            <meta 
+                name={props.title}
+                content={props.description}
+            />
+        </Head>
             <MeetupDetails 
             image={props.meetupData.image} 
             title={props.meetupData.title} 
