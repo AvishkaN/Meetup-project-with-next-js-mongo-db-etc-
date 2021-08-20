@@ -31,15 +31,28 @@ function Home(props) {
   )
 }
 
-export async function getStaticProps(){
-  // fetch data from an api
+// 1) getStaticProps
+// export async function getStaticProps(){
+//   // fetch data from an api
+//   return{
+//     props:{
+//       meetups:DUMMY_MEETUPS
+//     },
+//     revalidate:1,
+//   };
+// };
+
+export async function getServerSideProps(context){
+  const req=context.teq;
+  const res=context.res;
+
   return{
     props:{
-      meetups:DUMMY_MEETUPS
-    },
-    revalidate:1,
-  };
+      meetups:DUMMY_MEETUPS,
+    }
+  }
 };
+
 
 
 export default Home;
