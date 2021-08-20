@@ -2,12 +2,15 @@ import MeetupDetails from './../components/meetups/MeetupDetails'
 
 function meetUpId(props) {
     return (
+        <>
+        {console.log(props)}
         <MeetupDetails 
         image={props.meetupData.image} 
         title={props.meetupData.title} 
         address={props.meetupData.address} 
         description={props.meetupData.description}
         />
+        </>
     )
 }
 
@@ -41,7 +44,7 @@ export async function getStaticProps(context){
                 title:'first meetyup',
                 address:'some street,colombo,srilanka',
                 description:'this is a first meetup',
-            }
+            },
         }
     }
 }
