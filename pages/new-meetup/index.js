@@ -1,13 +1,13 @@
-import router, { useRouter } from 'next/router';
+import  { useRouter } from 'next/router';
 import React from 'react'
 import MeetupForm from './../../components/meetups/NewMeetupForm'
 import Head from 'next/head';
 
 function NewMeetup() {
-    const roter= useRouter();
+    const router= useRouter();
 
     const onAddMeetup=async (enteredMeetupData)=>{
-        console.log(roter);
+        console.log(router);
         console.log(enteredMeetupData);
 
       // add meetup details to api  
