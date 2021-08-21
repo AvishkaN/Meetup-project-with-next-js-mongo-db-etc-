@@ -6,6 +6,7 @@ import Head from 'next/head';
 
 
 function Home(props) {
+  
   console.log(`1`);
   return (
     <>
