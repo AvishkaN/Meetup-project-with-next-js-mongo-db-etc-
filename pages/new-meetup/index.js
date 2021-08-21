@@ -3,7 +3,7 @@ import React from 'react'
 import MeetupForm from './../../components/meetups/NewMeetupForm'
 import Head from 'next/head';
 
-function newMeetup() {
+function NewMeetup() {
     const roter= useRouter();
 
     const onAddMeetup=async (enteredMeetupData)=>{
@@ -38,4 +38,4 @@ function newMeetup() {
     )
 }
 
-export default newMeetup;
+export default NewMeetup;
